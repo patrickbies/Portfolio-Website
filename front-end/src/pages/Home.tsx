@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Home.css";
+import ThreeJSBackground from "@/components/ThreeJSBackground";
 
 const Home = () => {
   return (
@@ -32,8 +33,8 @@ const Home = () => {
         </div>
       </header>
       <div className="px-[10vw]">
-        <div className="bg-accent h-[90vh] w-full rounded-2xl shadow-xl border flex row overflow-hidden px-[5vw]">
-          <div className="w-[60%] py-[20vh]">
+        <div className="bg-accent h-[90vh] w-full rounded-2xl shadow-xl border-muted-foreground border-[0.25px] flex row overflow-hidden pl-[5vw]">
+          <div className="w-[100%] py-[20vh]">
             <h1 className="text-5xl poppins-bold text-foreground">
               Building innovative software solutions
             </h1>
@@ -43,7 +44,10 @@ const Home = () => {
             </h6>
 
           </div>
-          <div className="bg-red-500 w-[40%] h-full flex flex-row justify-between">
+          <div className="w-full">
+            <ThreeJSBackground />
+          </div>
+          {/* <div className="bg-red-500 w-[40%] h-full flex flex-row justify-between">
             <div className="w-[30%] flex justify-around h-full flex-col py-[10vh]">
               <div className="bg-blue-500 w-full aspect-square" />
               <div className="bg-blue-500 w-full aspect-square" />
@@ -60,7 +64,7 @@ const Home = () => {
               <div className="bg-blue-500 w-full aspect-square" />
               <div className="bg-blue-500 w-full aspect-square" />
             </div>
-          </div>
+          </div> */}
         </div>
         <h1 className="text-3xl poppins-semibold text-foreground w-[25vw] pt-[4vh] pl-[5vw]">
           Recent Projects
