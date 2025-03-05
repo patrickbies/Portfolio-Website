@@ -1,75 +1,21 @@
-import { Link } from "react-router-dom";
-import "./Home.css";
-import ThreeJSBackground from "@/components/ThreeJSBackground";
+import Background from "@/components/herobackground";
 
 const Home = () => {
   return (
-    <div className="bg-background w-full h-screen">
-      <header className="flex sticky inset-0 py-[3vh] px-[15vw] row items-center backdrop-blur-xl">
-        <h1 className="text-3xl poppins-semibold text-foreground w-[25vw]">
-          Patrick Bies
-        </h1>
-        <div className="flex row w-[30vw] poppins-regular justify-around">
-          <Link
-            to="about"
-            className="hover:text-muted-foreground transition-colors duration-300"
-          >
-            About
-          </Link>
-          <Link
-            to="projects"
-            className="hover:text-muted-foreground transition-colors duration-300"
-          >
-            Projects
-          </Link>
-          <button className="hover:text-muted-foreground transition-colors duration-300">
-            Resume
-          </button>
-        </div>
-        <div className="flex row w-[25vw] justify-end poppins-regular">
-          <button className="hover:text-muted-foreground transition-colors duration-300">
-            Contact
-          </button>
-        </div>
-      </header>
-      <div className="px-[10vw]">
-        <div className="bg-accent h-[90vh] w-full rounded-2xl shadow-xl border-muted-foreground border-[0.25px] flex row overflow-hidden pl-[5vw]">
-          <div className="w-[100%] py-[20vh]">
-            <h1 className="text-5xl poppins-bold text-foreground">
-              Building innovative software solutions
-            </h1>
-            <h6 className="text-xl poppins-regular text-muted-foreground py-[3vh]">
-              Computer science and mathematics student at the University of
-              Ottawa.
-            </h6>
-
+    <div className="bg-background">
+      <header className="h-[5vw] w-full">{/* Header content */}</header>
+      <div className="px-[2.5vw]">
+        <div className="relative h-[93vh] w-full rounded-2xl shadow-xl overflow-hidden">
+          <div className="relative z-50 flex justify-center">
+            <h1 className="text-8xl poppins-semibold">Patrick Bies</h1>
           </div>
-          <div className="w-full">
-            <ThreeJSBackground />
-          </div>
-          {/* <div className="bg-red-500 w-[40%] h-full flex flex-row justify-between">
-            <div className="w-[30%] flex justify-around h-full flex-col py-[10vh]">
-              <div className="bg-blue-500 w-full aspect-square" />
-              <div className="bg-blue-500 w-full aspect-square" />
-              <div className="bg-blue-500 w-full aspect-square" />
-            </div>
-            <div className="w-[30%] flex justify-around h-full flex-col py-[5vh]">
-              <div className="bg-blue-500 w-full aspect-square" />
-              <div className="bg-blue-500 w-full aspect-square" />
-              <div className="bg-blue-500 w-full aspect-square" />
-              <div className="bg-blue-500 w-full aspect-square" />
-            </div>
-            <div className="w-[30%] flex justify-around h-full flex-col py-[10vh]">
-              <div className="bg-blue-500 w-full aspect-square" />
-              <div className="bg-blue-500 w-full aspect-square" />
-              <div className="bg-blue-500 w-full aspect-square" />
-            </div>
-          </div> */}
+          <Background />
         </div>
+        <div className="flex justify-center">
         <h1 className="text-3xl poppins-semibold text-foreground w-[25vw] pt-[4vh] pl-[5vw]">
-          Recent Projects
+          Technologies
         </h1>
-
+        </div>
       </div>
     </div>
   );
