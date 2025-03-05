@@ -21,6 +21,7 @@ const Home = () => {
           <Background />
         </section>
         <section className="flex flex-col items-center mt-[4vh]">
+          <div className="absolute"><div id="projects" className="relative top-[-12vh]"></div></div>
           <h1 className="text-3xl poppins-semibold text-foreground/80">
             Recent Projects
           </h1>

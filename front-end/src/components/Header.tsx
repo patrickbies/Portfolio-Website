@@ -8,8 +8,16 @@ const Header = () => {
       </div>
       <div className="hidden md:flex flex-row justify-between w-[30vw] ">
         <Link
-          to="/projects"
+          to="/#projects"
           className="hover:text-foreground transition-colors"
+          onClick={(e) => {
+            e.preventDefault(); // Prevent default navigation behavior
+            const element = document.getElementById("projects");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+              window.history.pushState(null, "", "/#projects"); // Update URL without full reload
+            }
+          }}
         >
           Projects
         </Link>
