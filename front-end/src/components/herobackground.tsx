@@ -1,50 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-
-const generateNoiseImage = (width: number, height: number) => {
-  // Create an offscreen canvas
-  const canvas = document.createElement("canvas");
-  canvas.width = width;
-  canvas.height = height;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return "";
-
-  // Create ImageData to hold our pixel noise
-  const imageData = ctx.createImageData(width, height);
-  const data = imageData.data;
-
-  for (let i = 0; i < data.length; i += 4) {
-    const v = Math.floor(Math.random() * 256);
-    data[i] = v;
-    data[i + 1] = v;
-    data[i + 2] = v;
-    data[i + 3] = 255;
-  }
-  ctx.putImageData(imageData, 0, 0);
-
-  // Convert canvas to a data URL
-  return canvas.toDataURL();
-};
+import { useEffect, useRef } from "react";
+import NoiseBackground from "./noisebackground";
 
 const Background = () => {
-  const [noiseImage, setNoiseImage] = useState("");
-
-  useEffect(() => {
-    const noiseDataUrl = generateNoiseImage(200, 200);
-    setNoiseImage(noiseDataUrl);
-  }, []);
-
   return (
     <div className="absolute inset-0  ">
       <DynamicGradientCanvas />
-      <div
-        className="absolute inset-0 mix-blend-soft-light"
-        style={{
-          backgroundImage: `url(${noiseImage})`,
-          backgroundSize: "200px 200px",
-          backgroundRepeat: "repeat",
-          opacity: 0.1,
-        }}
-      />
+      <NoiseBackground />
     </div>
   );
 };
@@ -52,8 +13,9 @@ const Background = () => {
 interface BlobProps {
   x: number;
   y: number;
-  dx: number;
-  dy: number;
+  orbitRadius: number;
+  angle: number;
+  angularSpeed: number;
   radius: number;
   color: string;
 }
@@ -74,8 +36,9 @@ const DynamicGradientCanvas = () => {
     return {
       x: x,
       y: y,
-      dx: 0,//-0.5 + Math.random(),
-      dy: 0,//-0.5 + Math.random(),
+      orbitRadius: 25 + Math.random() * 25,
+      angle: Math.random() * Math.PI * 2,
+      angularSpeed: (Math.random() * 0.0002) - 0.01,
       radius: radius,
       color: color,
     };
@@ -124,15 +87,19 @@ const DynamicGradientCanvas = () => {
       ctx.globalCompositeOperation = "darken";
 
       blobs.forEach((blob) => {
+        blob.angle += blob.angularSpeed
+        const x = blob.x + blob.orbitRadius * Math.cos(blob.angle);
+        const y = blob.y + blob.orbitRadius * Math.sin(blob.angle);
+
         const centerColor = hexToRgba(blob.color, 0.7); 
         const midColor = hexToRgba(blob.color, 0.1);
 
         const gradient = ctx.createRadialGradient(
-          blob.x,
-          blob.y,
+          x,
+          y,
           0,
-          blob.x,
-          blob.y,
+          x,
+          y,
           blob.radius
         );
 
@@ -142,24 +109,8 @@ const DynamicGradientCanvas = () => {
 
         ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(blob.x, blob.y, blob.radius, 0, Math.PI * 2);
+        ctx.arc(x, y, blob.radius, 0, Math.PI * 2);
         ctx.fill();
-      });
-
-      blobs = blobs.map((blob) => {
-        let { x, y, dx, dy, radius, color } = blob;
-
-        x += dx;
-        y += dy;
-
-        if (x - radius < 0 || x + radius > canvas.width) {
-          dx = -dx;
-        }
-        if (y - radius < 0 || y + radius > canvas.height) {
-          dy = -dy;
-        }
-
-        return { x, y, dx, dy, radius, color };
       });
 
       requestAnimationFrame(animate);
