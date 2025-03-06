@@ -1,4 +1,5 @@
 import Card from "@/components/Card";
+import Carosel from "@/components/Carosel";
 import Header from "@/components/Header";
 import Background from "@/components/herobackground";
 
@@ -21,26 +22,35 @@ const Home = () => {
           <Background />
         </section>
         <section className="flex flex-col items-center mt-[4vh]">
-          <div className="absolute"><div id="projects" className="relative top-[-12vh]"></div></div>
+          <div className="absolute">
+            <div id="projects" className="relative top-[-12vh]"></div>
+          </div>
           <h1 className="text-3xl poppins-semibold text-foreground/80">
             Recent Projects
           </h1>
-          <div className="flex flex-row gap-[2vw] my-[4vh]">
-            <div className="w-[30vw] h-[70vh]">
-              <Card title="iGEM Wiki" desc="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, voluptate." />
+          <Carosel>
+            <div className="w-[30vw] min-w-[325px] h-[70vh]">
+              <Card
+                title="iGEM Wiki"
+                desc="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, voluptate."
+              />
             </div>
-            <div className="w-[30vw] h-[70vh]">
-              <Card title="Convolutional Neural Network" desc="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, voluptate." />
+            <div className="w-[30vw] min-w-[325px] h-[70vh]">
+              <Card
+                title="Convolutional Neural Network"
+                desc="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, voluptate."
+              />
             </div>
-            <div className="w-[30vw] h-[70vh]">
-              <Card title="Ai Code Editor" desc="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, voluptate." />
+            <div className="w-[30vw] min-w-[325px] h-[70vh]">
+              <Card
+                title="Ai Code Editor"
+                desc="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, voluptate."
+              />
             </div>
-          </div>
+          </Carosel>
         </section>
       </body>
-      <footer className="w-full border-t h-[20vh]">
-
-      </footer>
+      <footer className="w-full border-t h-[20vh]"></footer>
     </main>
   );
 };
