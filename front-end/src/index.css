@@ -38,6 +38,19 @@
   font-style: normal;
 }
 
+.roboto-mono-regular {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-mono-medium {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
 
 @layer base {
   :root {
@@ -108,4 +121,5 @@
 * {    
   scrollbar-width: thin;
   scrollbar-color: #222 transparent;
+  scroll-behavior: smooth;
 }

@@ -13,7 +13,7 @@ const Carosel = ({children} : {children : ReactNode}) => {
   }, []);
 
   return (
-    <div ref={scrollContainerRef} className="flex flex-row gap-[2vw] my-[4vh] !w-full overflow-x-scroll">
+    <div ref={scrollContainerRef} className="flex flex-row gap-[2vw] !w-full overflow-x-scroll">
       {children}
     </div>
   );

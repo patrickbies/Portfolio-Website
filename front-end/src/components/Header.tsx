@@ -6,7 +6,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed z-50 poppins-regular text-foreground/80 bg-background border-b items-center border-border h-[8vh] px-[5vw] w-full flex flex-row justify-between">
+    <header className="fixed z-50 roboto-mono-medium backdrop-blur-xl text-foreground/80 bg-background/70 items-center border-border h-[10vh] px-[5vw] w-full flex flex-row justify-between">
       <div className="w-[40vw] md:w-[15vw]">
         <Link to="/">Patrick Bies</Link>
       </div>
@@ -14,8 +14,7 @@ const Header = () => {
         <Link
           to="/#projects"
           className="hover:text-foreground transition-colors"
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={() => {
             const element = document.getElementById("projects");
             if (element) {
               element.scrollIntoView({ behavior: "smooth" });
@@ -33,7 +32,19 @@ const Header = () => {
         </Link>
       </div>
       <div className="w-[40vw] md:w-[15vw] flex justify-end">
-        <button className="cursor-pointer hidden md:block hover:text-foreground transition-colors">Contact</button>
+      <Link
+          to="/#contact"
+          className="hover:text-foreground transition-colors hidden md:block"
+          onClick={() => {
+            const element = document.getElementById("contact");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+              window.history.pushState(null, "", "/#contact");
+            }
+          }}
+        >
+          Contact
+        </Link>
         <button className="md:hidden" onMouseDown={() => setOpen(!open)}>
           <AlignJustify />
         </button>
@@ -46,20 +57,19 @@ const Header = () => {
         <div
           className={`w-full h-full flex flex-col ${open ? "block" : "hidden"}`}
         >
-          <Link
-            to="/#projects"
-            className="hover:text-foreground transition-colors"
-            onClick={(e) => {
-              e.preventDefault();
-              const element = document.getElementById("projects");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-                window.history.pushState(null, "", "/#projects");
-              }
-            }}
-          >
-            Projects
-          </Link>
+           <Link
+          to="/#projects"
+          className="hover:text-foreground transition-colors"
+          onClick={() => {
+            const element = document.getElementById("projects");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+              window.history.pushState(null, "", "/#projects");
+            }
+          }}
+        >
+          Projects
+        </Link>
           <Link to="/about" className="hover:text-foreground transition-colors">
             About
           </Link>
@@ -69,7 +79,19 @@ const Header = () => {
           >
             Resume
           </Link>
-          <button className="hover:text-foreground transition-colors">Contact</button>
+          <Link
+          to="/#projects"
+          className="hover:text-foreground transition-colors"
+          onClick={() => {
+            const element = document.getElementById("projects");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+              window.history.pushState(null, "", "/#projects");
+            }
+          }}
+        >
+          Contact
+        </Link>
         </div>
       </div>
     </header>

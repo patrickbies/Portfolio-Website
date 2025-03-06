@@ -3,7 +3,7 @@ import NoiseBackground from "./noisebackground";
 
 const Background = () => {
   return (
-    <div className="absolute inset-0  ">
+    <div className="absolute inset-0 bg-background opacity-90">
       <DynamicGradientCanvas />
       <NoiseBackground />
     </div>
