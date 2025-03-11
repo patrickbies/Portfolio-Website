@@ -78,6 +78,15 @@ const Home = () => {
         </section>
         <section className="flex flex-col items-center mt-[4vh]">
           <div className="absolute">
+            <div id="about" className="relative top-[-13vh]"></div>
+          </div>
+          <h1 className="text-3xl poppins-semibold text-foreground/80 mb-[4vh]">
+            About
+          </h1>
+          <p className="text-xl text-foreground/70 text-center">I'm a computer science and mathematics student at uOttawa.</p>
+        </section>
+        <section className="flex flex-col items-center mt-[4vh]">
+          <div className="absolute">
             <div id="contact" className="relative top-[-13vh]"></div>
           </div>
           <h1 className="text-3xl poppins-semibold text-foreground/80 mb-[4vh]">
@@ -85,7 +94,9 @@ const Home = () => {
           </h1>
         </section>
       </body>
-      <footer className="w-full border-t h-[20vh]"></footer>
+      <footer className="w-full border-t h-[20vh]">
+
+      </footer>
     </main>
   );
 };

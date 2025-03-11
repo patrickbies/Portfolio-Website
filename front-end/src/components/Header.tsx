@@ -24,7 +24,17 @@ const Header = () => {
         >
           Projects
         </Link>
-        <Link to="/about" className="hover:text-foreground transition-colors">
+        <Link
+          to="/#about"
+          className="hover:text-foreground transition-colors hidden md:block"
+          onClick={() => {
+            const element = document.getElementById("contact");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+              window.history.pushState(null, "", "/#about");
+            }
+          }}
+        >
           About
         </Link>
         <Link to="/resume" className="hover:text-foreground transition-colors">
